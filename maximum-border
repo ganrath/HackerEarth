@@ -1,0 +1,151 @@
+link: https://www.hackerearth.com/practice/basic-programming/input-output/basics-of-input-output/practice-problems/algorithm/maximum-border-9767e14c/
+
+
+<script>
+
+var input = `10
+2 15
+.....####......
+.....#.........
+7 9
+...###...
+...###...
+..#......
+.####....
+..#......
+...#####.
+.........
+18 11
+.#########.
+########...
+.........#.
+####.......
+.....#####.
+.....##....
+....#####..
+.....####..
+..###......
+......#....
+....#####..
+...####....
+##.........
+#####......
+....#####..
+....##.....
+.#######...
+.#.........
+1 15
+.....######....
+5 11
+..#####....
+.#######...
+......#....
+....#####..
+...#####...
+8 13
+.....######..
+......##.....
+########.....
+...#.........
+.............
+#######......
+..######.....
+####.........
+7 5
+.....
+..##.
+###..
+..##.
+.....
+..#..
+.#...
+14 2
+..
+#.
+..
+#.
+..
+#.
+..
+..
+#.
+..
+..
+..
+#.
+..
+7 15
+.###########...
+##############.
+...####........
+...##########..
+.......#.......
+.....#########.
+.#######.......
+12 6
+#####.
+###...
+#.....
+##....
+###...
+......
+.##...
+..##..
+...#..
+..#...
+#####.
+####..`;
+
+
+
+var totalblock = [];
+
+function findBlock(block){
+  
+ var isSlash = 0;
+  
+ for(var i = 0; i < block.length; i++){
+    if(block.charAt(i) == '#'){
+        isSlash = isSlash + 1;
+     }
+}
+
+if(isSlash > 0){
+    totalblock.push(isSlash)
+}
+else if(isSlash == 0){
+    if(totalblock.length > 0){
+        //console.log(totalblock)
+     printNumber()
+    }
+    //console.log(block)
+    totalblock = []; 
+}
+ 
+
+}
+
+function printNumber(){
+
+    console.log(totalblock.sort((a,b)=>a-b)[totalblock.length - 1]);
+
+}
+
+function splitArray(text){
+  var temp = text.replaceAll('.','').split('\n');
+  for(var i=0;i < temp.length; i++){
+    if(temp[i].length > 0)
+     // console.log(temp[i])
+        findBlock(temp[i])
+  }
+  printNumber()
+
+}
+
+
+function main(){
+  splitArray(input)
+}
+
+main();
+</script>
